@@ -7,17 +7,6 @@
     /// </summary>
     public class ServicePlatformMessageAuditConfiguration
     {
-        ///// <summary>
-        ///// Creates a new <see cref="ServicePlatformMessageAuditConfiguration"/>.
-        ///// </summary>
-        ///// <param name="auditQueue">The queue to send audit messages to.</param>
-        //public ServicePlatformMessageAuditConfiguration(string auditQueue)
-        //{
-        //    Guard.AgainstNullAndEmpty(nameof(auditQueue), auditQueue);
-        //    AuditQueue = auditQueue;
-        //    Enabled = true;
-        //}
-
         /// <summary>
         /// If true, the endpoint will send a copy of each message processed to the Particular Service Platform.
         /// </summary>
