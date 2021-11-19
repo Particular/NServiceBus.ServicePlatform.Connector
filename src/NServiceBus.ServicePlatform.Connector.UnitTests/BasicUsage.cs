@@ -17,18 +17,25 @@
     class BasicUsage
     {
         const string JsonConfiguration = @"{
-            ""auditQueue"": ""myAuditQueue"",
             ""errorQueue"": ""myErrorQueue"",
             ""heartbeats"": {
+                ""enabled"": true,
                 ""heartbeatQueue"": ""heartbeatsServiceControlQueue""
             },
             ""customChecks"": {
-                ""customChecksQueue"": ""customChecksServiceControlQueue""
+                ""enabled"": true,
+                ""customCheckQueue"": ""customChecksServiceControlQueue""
+            },
+            ""messageAudit"": {
+                ""enabled"": true,
+                ""auditQueue"": ""myAuditQueue""
             },
             ""sagaAudit"": {
+                ""enabled"": true,
                 ""sagaAuditQueue"": ""sagaAuditServiceControlQueue""
             },
             ""metrics"": {
+                ""enabled"": true,
                 ""metricsQueue"": ""metricServiceControlQueue"",
                 ""interval"": ""00:00:10""
             }

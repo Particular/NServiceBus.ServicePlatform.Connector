@@ -8,6 +8,11 @@
     public class ServicePlatformHeartbeatConfiguration
     {
         /// <summary>
+        /// If true, the endpoint will send heartbeats to the Particular Service Platform.
+        /// </summary>
+        public bool Enabled { get; set; }
+
+        /// <summary>
         /// The transport queue to send Heartbeat messages to.
         /// </summary>
         public string HeartbeatQueue { get; set; }
@@ -24,10 +29,19 @@
 
         internal void ApplyTo(EndpointConfiguration endpointConfiguration)
         {
-            if (string.IsNullOrWhiteSpace(HeartbeatQueue) == false)
+            if (!Enabled)
             {
-                endpointConfiguration.SendHeartbeatTo(HeartbeatQueue, Frequency, TimeToLive);
+                return;
             }
+
+            if (string.IsNullOrWhiteSpace(HeartbeatQueue))
+            {
+                throw new Exception(
+                    @"Sending heartbeats is enabled but no heartbeat queue has been configured.
+Configure a heartbeat queue or disable sending heartbeats to the Particular Service Platform");
+            }
+
+            endpointConfiguration.SendHeartbeatTo(HeartbeatQueue, Frequency, TimeToLive);
         }
     }
 }

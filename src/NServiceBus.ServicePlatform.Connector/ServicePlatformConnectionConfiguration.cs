@@ -8,11 +8,6 @@
     public class ServicePlatformConnectionConfiguration
     {
         /// <summary>
-        /// The transport queue to send audit messages to.
-        /// </summary>
-        public string AuditQueue { get; set; }
-
-        /// <summary>
         /// The transport queue to send failed messages to.
         /// </summary>
         public string ErrorQueue { get; set; }
@@ -28,7 +23,12 @@
         public ServicePlatformCustomChecksConfiguration CustomChecks { get; set; }
 
         /// <summary>
-        /// Configuration options for the Saga Audit feature.
+        /// Configuration options for the Message Auditing feature.
+        /// </summary>
+        public ServicePlatformMessageAuditConfiguration MessageAudit { get; set; }
+
+        /// <summary>
+        /// Configuration options for the Saga Auditing feature.
         /// </summary>
         public ServicePlatformSagaAuditConfiguration SagaAudit { get; set; }
 
@@ -39,11 +39,6 @@
 
         internal void ApplyTo(EndpointConfiguration endpointConfiguration)
         {
-            if (string.IsNullOrWhiteSpace(AuditQueue) == false)
-            {
-                endpointConfiguration.AuditProcessedMessagesTo(AuditQueue);
-            }
-
             if (string.IsNullOrWhiteSpace(ErrorQueue) == false)
             {
                 endpointConfiguration.SendFailedMessagesTo(ErrorQueue);
@@ -52,6 +47,7 @@
             Heartbeats?.ApplyTo(endpointConfiguration);
             CustomChecks?.ApplyTo(endpointConfiguration);
             SagaAudit?.ApplyTo(endpointConfiguration);
+            MessageAudit?.ApplyTo(endpointConfiguration);
             Metrics?.ApplyTo(endpointConfiguration);
         }
 
