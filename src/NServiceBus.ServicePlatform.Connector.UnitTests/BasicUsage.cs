@@ -1,5 +1,6 @@
 ﻿namespace NServiceBus.PlatformConnection.UnitTests
 {
+    using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.IO;
@@ -58,6 +59,80 @@
                 .ToArray();
 
             Approver.Verify(changes);
+        }
+
+        static IEnumerable<TestCaseData> OneEnabledFeature
+        {
+            get
+            {
+                var messageAudit = new ServicePlatformConnectionConfiguration
+                {
+                    MessageAudit = new ServicePlatformMessageAuditConfiguration
+                    {
+                        Enabled = true,
+                        AuditQueue = "audit"
+                    }
+                };
+                yield return new TestCaseData("MessageAudit", messageAudit);
+
+                var customChecks = new ServicePlatformConnectionConfiguration
+                {
+                    CustomChecks = new ServicePlatformCustomChecksConfiguration
+                    {
+                        Enabled = true,
+                        CustomCheckQueue = "CustomChecksQueue"
+                    }
+                };
+                yield return new TestCaseData("CustomChecks", customChecks);
+
+                var heartbeats = new ServicePlatformConnectionConfiguration
+                {
+                    Heartbeats = new ServicePlatformHeartbeatConfiguration
+                    {
+                        Enabled = true,
+                        HeartbeatQueue = "HeartbeatQueue"
+                    }
+                };
+                yield return new TestCaseData("Heartbeats", heartbeats);
+
+                var sagaAudit = new ServicePlatformConnectionConfiguration
+                {
+                    SagaAudit = new ServicePlatformSagaAuditConfiguration
+                    {
+                        Enabled = true,
+                        SagaAuditQueue = "SagaAuditQueue"
+                    }
+                };
+                yield return new TestCaseData("SagaAudit", sagaAudit);
+
+                var metrics = new ServicePlatformConnectionConfiguration
+                {
+                    Metrics = new ServicePlatformMetricsConfiguration
+                    {
+                        Enabled = true,
+                        MetricsQueue = "MetricsQueue",
+                        Interval = TimeSpan.FromSeconds(1)
+                    }
+                };
+                yield return new TestCaseData("Metrics", metrics);
+            }
+        }
+
+        [Test, TestCaseSource(nameof(OneEnabledFeature))]
+        public void HandlesEnableFlag(string scenario, ServicePlatformConnectionConfiguration connectionConfig)
+        {
+            var endpointConfig = new EndpointConfiguration("SomeEndpoint");
+
+            var beforeSettings = GetExplicitSettings(endpointConfig);
+
+            endpointConfig.ConnectToServicePlatform(connectionConfig);
+
+            var afterSettings = GetExplicitSettings(endpointConfig);
+            var changes = afterSettings.Except(beforeSettings)
+                .OrderBy(x => x)
+                .ToArray();
+
+            Approver.Verify(changes, scenario: scenario);
         }
 
         [Test]

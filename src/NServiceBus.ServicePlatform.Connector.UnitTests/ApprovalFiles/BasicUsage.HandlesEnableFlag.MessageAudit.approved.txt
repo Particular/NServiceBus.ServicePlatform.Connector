@@ -1,0 +1,3 @@
+[
+  "NServiceBus.AuditConfigReader+Result"
+]
