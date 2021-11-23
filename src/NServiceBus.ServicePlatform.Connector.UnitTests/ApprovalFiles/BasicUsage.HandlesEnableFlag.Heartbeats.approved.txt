@@ -1,0 +1,4 @@
+[
+  "NServiceBus.Heartbeat.HeartbeatsFeature",
+  "NServiceBus.Heartbeat.Queue"
+]

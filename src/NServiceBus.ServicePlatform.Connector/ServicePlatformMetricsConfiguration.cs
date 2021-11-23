@@ -8,6 +8,11 @@
     public class ServicePlatformMetricsConfiguration
     {
         /// <summary>
+        /// If true, the endpoint will send metric data to the Particular Service Platform.
+        /// </summary>
+        public bool Enabled { get; set; }
+
+        /// <summary>
         /// The transport queue to send Metrics messages to.
         /// </summary>
         public string MetricsQueue { get; set; }
@@ -29,14 +34,23 @@
 
         internal void ApplyTo(EndpointConfiguration endpointConfiguration)
         {
-            if (string.IsNullOrWhiteSpace(MetricsQueue) == false)
+            if (!Enabled)
             {
-                var metrics = endpointConfiguration.EnableMetrics();
-                metrics.SendMetricDataToServiceControl(MetricsQueue, Interval, InstanceId);
-                if (TimeToBeReceived.HasValue)
-                {
-                    metrics.SetServiceControlMetricsMessageTTBR(TimeToBeReceived.Value);
-                }
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(MetricsQueue))
+            {
+                throw new Exception(
+                    @"Sending metric data is enabled but no metrics queue has been configured.
+Configure a metrics queue or disable sending metric data to the Particular Service Platform");
+            }
+
+            var metrics = endpointConfiguration.EnableMetrics();
+            metrics.SendMetricDataToServiceControl(MetricsQueue, Interval, InstanceId);
+            if (TimeToBeReceived.HasValue)
+            {
+                metrics.SetServiceControlMetricsMessageTTBR(TimeToBeReceived.Value);
             }
         }
     }

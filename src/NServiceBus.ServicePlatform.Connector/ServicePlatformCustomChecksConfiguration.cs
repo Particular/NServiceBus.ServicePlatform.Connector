@@ -8,6 +8,11 @@
     public class ServicePlatformCustomChecksConfiguration
     {
         /// <summary>
+        /// If true, the endpoint will send custom check results to the Particular Service Platform.
+        /// </summary>
+        public bool Enabled { get; set; }
+
+        /// <summary>
         /// The transport queue to send Custom Checks messages to.
         /// </summary>
         public string CustomCheckQueue { get; set; }
@@ -19,10 +24,19 @@
 
         internal void ApplyTo(EndpointConfiguration endpointConfiguration)
         {
-            if (string.IsNullOrWhiteSpace(CustomCheckQueue) == false)
+            if (!Enabled)
             {
-                endpointConfiguration.ReportCustomChecksTo(CustomCheckQueue, TimeToLive);
+                return;
             }
+
+            if (string.IsNullOrWhiteSpace(CustomCheckQueue))
+            {
+                throw new Exception(
+                    @"Sending custom checks results is enabled but no custom check queue has been configured.
+Configure a custom check queue or disable sending custom checks to the Particular Service Platform");
+            }
+
+            endpointConfiguration.ReportCustomChecksTo(CustomCheckQueue, TimeToLive);
         }
     }
 }

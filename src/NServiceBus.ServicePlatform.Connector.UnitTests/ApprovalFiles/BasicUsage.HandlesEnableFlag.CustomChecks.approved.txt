@@ -1,0 +1,4 @@
+[
+  "NServiceBus.CustomChecks.CustomChecksFeature",
+  "NServiceBus.CustomChecks.Queue"
+]
