@@ -21,11 +21,11 @@
             ""errorQueue"": ""myErrorQueue"",
             ""heartbeats"": {
                 ""enabled"": true,
-                ""heartbeatQueue"": ""heartbeatsServiceControlQueue""
+                ""heartbeatsQueue"": ""heartbeatsServiceControlQueue""
             },
             ""customChecks"": {
                 ""enabled"": true,
-                ""customCheckQueue"": ""customChecksServiceControlQueue""
+                ""customChecksQueue"": ""customChecksServiceControlQueue""
             },
             ""messageAudit"": {
                 ""enabled"": true,
@@ -80,7 +80,7 @@
                     CustomChecks = new ServicePlatformCustomChecksConfiguration
                     {
                         Enabled = true,
-                        CustomCheckQueue = "CustomChecksQueue"
+                        CustomChecksQueue = "CustomChecksQueue"
                     }
                 };
                 yield return new TestCaseData("CustomChecks", customChecks);
@@ -90,7 +90,7 @@
                     Heartbeats = new ServicePlatformHeartbeatConfiguration
                     {
                         Enabled = true,
-                        HeartbeatQueue = "HeartbeatQueue"
+                        HeartbeatsQueue = "HeartbeatQueue"
                     }
                 };
                 yield return new TestCaseData("Heartbeats", heartbeats);

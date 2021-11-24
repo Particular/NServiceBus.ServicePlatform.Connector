@@ -15,7 +15,7 @@
         /// <summary>
         /// The transport queue to send Heartbeat messages to.
         /// </summary>
-        public string HeartbeatQueue { get; set; }
+        public string HeartbeatsQueue { get; set; }
 
         /// <summary>
         /// The frequency to send Heartbeat messages.
@@ -34,14 +34,14 @@
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(HeartbeatQueue))
+            if (string.IsNullOrWhiteSpace(HeartbeatsQueue))
             {
                 throw new Exception(
                     @"Sending heartbeats is enabled but no heartbeat queue has been configured.
 Configure a heartbeat queue or disable sending heartbeats to the Particular Service Platform");
             }
 
-            endpointConfiguration.SendHeartbeatTo(HeartbeatQueue, Frequency, TimeToLive);
+            endpointConfiguration.SendHeartbeatTo(HeartbeatsQueue, Frequency, TimeToLive);
         }
     }
 }

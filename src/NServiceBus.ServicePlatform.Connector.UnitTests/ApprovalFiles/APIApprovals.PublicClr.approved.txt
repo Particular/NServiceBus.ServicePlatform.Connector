@@ -18,7 +18,7 @@ namespace NServiceBus
     public class ServicePlatformCustomChecksConfiguration
     {
         public ServicePlatformCustomChecksConfiguration() { }
-        public string CustomCheckQueue { get; set; }
+        public string CustomChecksQueue { get; set; }
         public bool Enabled { get; set; }
         public System.TimeSpan? TimeToLive { get; set; }
     }
@@ -27,7 +27,7 @@ namespace NServiceBus
         public ServicePlatformHeartbeatConfiguration() { }
         public bool Enabled { get; set; }
         public System.TimeSpan? Frequency { get; set; }
-        public string HeartbeatQueue { get; set; }
+        public string HeartbeatsQueue { get; set; }
         public System.TimeSpan? TimeToLive { get; set; }
     }
     public class ServicePlatformMessageAuditConfiguration

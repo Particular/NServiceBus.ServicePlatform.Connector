@@ -15,7 +15,7 @@
         /// <summary>
         /// The transport queue to send Custom Checks messages to.
         /// </summary>
-        public string CustomCheckQueue { get; set; }
+        public string CustomChecksQueue { get; set; }
 
         /// <summary>
         /// The maximum time to live for Custom Checks messages.
@@ -29,14 +29,14 @@
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(CustomCheckQueue))
+            if (string.IsNullOrWhiteSpace(CustomChecksQueue))
             {
                 throw new Exception(
                     @"Sending custom checks results is enabled but no custom check queue has been configured.
 Configure a custom check queue or disable sending custom checks to the Particular Service Platform");
             }
 
-            endpointConfiguration.ReportCustomChecksTo(CustomCheckQueue, TimeToLive);
+            endpointConfiguration.ReportCustomChecksTo(CustomChecksQueue, TimeToLive);
         }
     }
 }
