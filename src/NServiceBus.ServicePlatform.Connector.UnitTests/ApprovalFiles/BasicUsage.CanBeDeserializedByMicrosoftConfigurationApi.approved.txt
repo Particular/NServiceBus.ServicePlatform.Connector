@@ -1,12 +1,12 @@
 [
   "errorQueue",
-  "MetricsFeature",
   "NServiceBus.AuditConfigReader+Result",
   "NServiceBus.CustomChecks.CustomChecksFeature",
   "NServiceBus.CustomChecks.Queue",
   "NServiceBus.Features.SagaAuditFeature",
   "NServiceBus.Heartbeat.HeartbeatsFeature",
   "NServiceBus.Heartbeat.Queue",
+  "NServiceBus.Metrics.MetricsFeature",
   "NServiceBus.MetricsOptions",
   "NServiceBus.SagaAudit.Queue"
 ]
