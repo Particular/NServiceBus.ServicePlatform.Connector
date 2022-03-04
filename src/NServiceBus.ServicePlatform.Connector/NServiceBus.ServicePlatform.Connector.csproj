@@ -16,12 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NServiceBus" Version="[8.0.0-alpha.1901, 9.0.0)" />
-    <PackageReference Include="NServiceBus.Heartbeat" Version="4.0.0-alpha.253" />
-    <PackageReference Include="NServiceBus.CustomChecks" Version="4.0.0-alpha.253" />
-    <PackageReference Include="NServiceBus.SagaAudit" Version="4.0.0-alpha.251" />
-    <PackageReference Include="NServiceBus.Metrics.ServiceControl" Version="4.0.0-alpha.164" />
-    <PackageReference Include="NServiceBus.Metrics" Version="4.0.0-alpha.153" />
+    <PackageReference Include="NServiceBus" Version="[8.0.0-beta.1, 9.0.0)" />
+    <PackageReference Include="NServiceBus.Heartbeat" Version="4.0.0-beta.1" />
+    <PackageReference Include="NServiceBus.CustomChecks" Version="4.0.0-beta.1" />
+    <PackageReference Include="NServiceBus.SagaAudit" Version="4.0.0-beta.1" />
+    <PackageReference Include="NServiceBus.Metrics.ServiceControl" Version="4.0.0-beta.1" />
+    <PackageReference Include="NServiceBus.Metrics" Version="4.0.0-beta.1" />
   </ItemGroup>
 
   <ItemGroup>
