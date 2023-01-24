@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <PackageId>NServiceBus.ServicePlatform.Connector</PackageId>
-    <Description>Support for connecting NServiceBus endpoints to the Particular Service Plaform</Description>
+    <Description>Support for connecting NServiceBus endpoints to the Particular Service Platform</Description>
   </PropertyGroup>
 
   <ItemGroup>
