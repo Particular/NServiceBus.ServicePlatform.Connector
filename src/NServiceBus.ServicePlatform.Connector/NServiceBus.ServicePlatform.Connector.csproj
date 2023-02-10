@@ -18,7 +18,7 @@
     <PackageReference Include="NServiceBus.Metrics.ServiceControl" Version="[4.0.0, 5.0.0)" />
     <PackageReference Include="NServiceBus.Metrics" Version="[4.0.0, 5.0.0)" />
     <PackageReference Include="NServiceBus.SagaAudit" Version="[4.0.0, 5.0.0)" />
-    <PackageReference Include="System.Text.Json" Version="6.0.5" />
+    <PackageReference Include="System.Text.Json" Version="7.0.1" />
   </ItemGroup>
 
   <ItemGroup Label="Private dependencies">
