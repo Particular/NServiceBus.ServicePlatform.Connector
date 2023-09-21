@@ -1,5 +1,7 @@
 ﻿namespace NServiceBus
 {
+    using System;
+
     /// <summary>
     /// Provides extension methods to configure an NServiceBus endpoint connection to the Particular Service Platform.
     /// </summary>
@@ -10,8 +12,8 @@
         /// </summary>
         public static void ConnectToServicePlatform(this EndpointConfiguration endpointConfiguration, ServicePlatformConnectionConfiguration servicePlatformConnectionConfiguration)
         {
-            Guard.AgainstNull(nameof(endpointConfiguration), endpointConfiguration);
-            Guard.AgainstNull(nameof(servicePlatformConnectionConfiguration), servicePlatformConnectionConfiguration);
+            ArgumentNullException.ThrowIfNull(endpointConfiguration);
+            ArgumentNullException.ThrowIfNull(servicePlatformConnectionConfiguration);
 
             servicePlatformConnectionConfiguration.ApplyTo(endpointConfiguration);
         }
