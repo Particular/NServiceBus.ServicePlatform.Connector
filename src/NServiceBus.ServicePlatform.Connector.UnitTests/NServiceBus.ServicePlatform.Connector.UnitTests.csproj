@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Transitive references">
-    <PackageReference Include="NServiceBus" Version="9.0.0-alpha.5" />
+    <PackageReference Include="NServiceBus" Version="9.0.0-alpha.6" />
     <PackageReference Include="NServiceBus.CustomChecks" Version="5.0.0-alpha.1" />
     <PackageReference Include="NServiceBus.Heartbeat" Version="5.0.0-alpha.1" />
     <PackageReference Include="NServiceBus.Metrics" Version="5.0.0-alpha.1" />
