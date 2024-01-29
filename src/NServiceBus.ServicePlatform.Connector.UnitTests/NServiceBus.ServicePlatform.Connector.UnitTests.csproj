@@ -16,13 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NServiceBus.Extensions.Hosting" Version="3.0.0-alpha.1" />
+    <PackageReference Include="NServiceBus.Extensions.Hosting" Version="3.0.0-alpha.3" />
     <PackageReference Include="Particular.Approvals" Version="1.0.0" />
     <PackageReference Include="PublicApiGenerator" Version="11.1.0" />
   </ItemGroup>
 
   <ItemGroup Label="Transitive references">
-    <PackageReference Include="NServiceBus" Version="9.0.0-alpha.6" />
+    <PackageReference Include="NServiceBus" Version="9.0.0-alpha.9" />
     <PackageReference Include="NServiceBus.CustomChecks" Version="5.0.0-alpha.1" />
     <PackageReference Include="NServiceBus.Heartbeat" Version="5.0.0-alpha.1" />
     <PackageReference Include="NServiceBus.Metrics" Version="5.0.0-alpha.1" />
