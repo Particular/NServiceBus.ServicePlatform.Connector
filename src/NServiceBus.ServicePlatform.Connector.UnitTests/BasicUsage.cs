@@ -153,6 +153,8 @@
                 .UseNServiceBus(c =>
                 {
                     var configuration = new EndpointConfiguration("whatever");
+
+                    configuration.UseSerialization<SystemJsonSerializer>();
                     configuration.UseTransport<LearningTransport>();
 
                     var platformConfiguration = new ServicePlatformConnectionConfiguration();

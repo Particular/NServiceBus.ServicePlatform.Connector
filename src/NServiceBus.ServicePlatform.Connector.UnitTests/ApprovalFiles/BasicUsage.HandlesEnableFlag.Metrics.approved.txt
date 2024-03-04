@@ -1,4 +1,3 @@
 [
-  "NServiceBus.Metrics.MetricsFeature",
   "NServiceBus.MetricsOptions"
 ]
