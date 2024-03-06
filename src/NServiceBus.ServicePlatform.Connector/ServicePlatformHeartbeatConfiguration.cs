@@ -36,9 +36,7 @@
 
             if (string.IsNullOrWhiteSpace(HeartbeatsQueue))
             {
-                throw new Exception(
-                    @"Sending heartbeats is enabled but no heartbeat queue has been configured.
-Configure a heartbeat queue or disable sending heartbeats to the Particular Service Platform");
+                throw new Exception("Sending heartbeats is enabled but no heartbeat queue has been configured. Configure a heartbeat queue or disable sending heartbeats to the Particular Service Platform.");
             }
 
             endpointConfiguration.SendHeartbeatTo(HeartbeatsQueue, Frequency, TimeToLive);

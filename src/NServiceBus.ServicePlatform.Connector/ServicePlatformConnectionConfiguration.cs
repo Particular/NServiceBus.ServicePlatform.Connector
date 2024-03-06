@@ -52,7 +52,7 @@
         }
 
         /// <summary>
-        /// Creates a new <see cref="ServicePlatformConnectionConfiguration"/> from json produced by the Particular Service Platform.
+        /// Creates a new <see cref="ServicePlatformConnectionConfiguration"/> from JSON produced by the Particular Service Platform.
         /// </summary>
         public static ServicePlatformConnectionConfiguration Parse(string jsonConfiguration)
         {
@@ -61,7 +61,7 @@
                 PropertyNameCaseInsensitive = true
             };
             options.Converters.Add(new JsonTimeSpanConverterFactory());
-            return System.Text.Json.JsonSerializer.Deserialize<ServicePlatformConnectionConfiguration>(jsonConfiguration, options);
+            return JsonSerializer.Deserialize<ServicePlatformConnectionConfiguration>(jsonConfiguration, options);
         }
     }
 }

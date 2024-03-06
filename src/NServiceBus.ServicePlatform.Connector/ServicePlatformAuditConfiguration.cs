@@ -26,9 +26,7 @@
 
             if (string.IsNullOrWhiteSpace(AuditQueue))
             {
-                throw new Exception(
-                    @"Message auditing is enabled but no audit queue has been configured.
-Configure an audit queue or disable message auditing");
+                throw new Exception("Message auditing is enabled but no audit queue has been configured. Configure an audit queue or disable message auditing.");
             }
 
             endpointConfiguration.AuditProcessedMessagesTo(AuditQueue);

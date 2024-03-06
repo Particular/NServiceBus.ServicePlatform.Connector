@@ -31,9 +31,7 @@
 
             if (string.IsNullOrWhiteSpace(CustomChecksQueue))
             {
-                throw new Exception(
-                    @"Sending custom checks results is enabled but no custom check queue has been configured.
-Configure a custom check queue or disable sending custom checks to the Particular Service Platform");
+                throw new Exception("Sending custom checks results is enabled but no custom check queue has been configured. Configure a custom check queue or disable sending custom checks to the Particular Service Platform.");
             }
 
             endpointConfiguration.ReportCustomChecksTo(CustomChecksQueue, TimeToLive);
