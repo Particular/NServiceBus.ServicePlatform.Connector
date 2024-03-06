@@ -41,9 +41,7 @@
 
             if (string.IsNullOrWhiteSpace(MetricsQueue))
             {
-                throw new Exception(
-                    @"Sending metric data is enabled but no metrics queue has been configured.
-Configure a metrics queue or disable sending metric data to the Particular Service Platform");
+                throw new Exception("Sending metric data is enabled but no metrics queue has been configured. Configure a metrics queue or disable sending metric data to the Particular Service Platform.");
             }
 
             var metrics = endpointConfiguration.EnableMetrics();

@@ -6,7 +6,6 @@
   "NServiceBus.Features.SagaAuditFeature",
   "NServiceBus.Heartbeat.HeartbeatsFeature",
   "NServiceBus.Heartbeat.Queue",
-  "NServiceBus.Metrics.MetricsFeature",
   "NServiceBus.MetricsOptions",
   "NServiceBus.SagaAudit.Queue"
 ]
