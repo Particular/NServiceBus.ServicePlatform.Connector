@@ -136,7 +136,7 @@
         }
 
         [Test]
-        public void CanBeDeserializedByMicrosoftConfigurationApi()
+        public void CanBeDeserializedByMicrosoftConfigurationApiWhenUsingHostBuilder()
         {
             var builder = new HostBuilder();
 
@@ -172,6 +172,40 @@
 
                     return configuration;
                 });
+
+            builder.Build();
+
+            Approver.Verify(settingChanges);
+        }
+
+        [Test]
+        public void CanBeDeserializedByMicrosoftConfigurationApiWhenUsingHostApplicationBuilder()
+        {
+            var builder = Host.CreateApplicationBuilder();
+
+            var json = $@"{{""ServicePlatformConfiguration"" : {JsonConfiguration}}}";
+            var jsonStream = new MemoryStream(Encoding.ASCII.GetBytes(json));
+
+            builder.Configuration.AddJsonStream(jsonStream);
+
+            var endpointConfiguration = new EndpointConfiguration("whatever");
+            endpointConfiguration.UseSerialization<SystemJsonSerializer>();
+            endpointConfiguration.UseTransport<LearningTransport>();
+
+            var platformConfiguration = new ServicePlatformConnectionConfiguration();
+            builder.Configuration.Bind("ServicePlatformConfiguration", platformConfiguration);
+
+            var beforeSettings = GetExplicitSettings(endpointConfiguration);
+
+            endpointConfiguration.ConnectToServicePlatform(platformConfiguration);
+
+            var afterSettings = GetExplicitSettings(endpointConfiguration);
+
+            var settingChanges = afterSettings.Except(beforeSettings)
+                .OrderBy(x => x)
+                .ToArray();
+
+            builder.UseNServiceBus(endpointConfiguration);
 
             builder.Build();
 
