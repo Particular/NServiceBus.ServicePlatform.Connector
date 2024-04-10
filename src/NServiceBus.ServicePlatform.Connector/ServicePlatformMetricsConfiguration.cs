@@ -1,6 +1,7 @@
 ﻿namespace NServiceBus
 {
     using System;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Contains configuration options for the Metrics features of the Particular Service Platform.
@@ -30,7 +31,21 @@
         /// <summary>
         /// The maximum time to live for Metrics messages.
         /// </summary>
-        public TimeSpan? TimeToBeReceived { get; set; }
+        [ObsoleteEx(
+            TreatAsErrorFromVersion = "4.0.0",
+            RemoveInVersion = "5.0.0",
+            ReplacementTypeOrMember = "TimeToLive")]
+        [JsonIgnore]
+        public TimeSpan? TimeToBeReceived
+        {
+            get => TimeToLive;
+            set => TimeToLive = value;
+        }
+
+        /// <summary>
+        /// The maximum time to live for Metrics messages.
+        /// </summary>
+        public TimeSpan? TimeToLive { get; set; }
 
         internal void ApplyTo(EndpointConfiguration endpointConfiguration)
         {
@@ -46,9 +61,10 @@
 
             var metrics = endpointConfiguration.EnableMetrics();
             metrics.SendMetricDataToServiceControl(MetricsQueue, Interval, InstanceId);
-            if (TimeToBeReceived.HasValue)
+
+            if (TimeToLive.HasValue)
             {
-                metrics.SetServiceControlMetricsMessageTTBR(TimeToBeReceived.Value);
+                metrics.SetServiceControlMetricsMessageTTBR(TimeToLive.Value);
             }
         }
     }
