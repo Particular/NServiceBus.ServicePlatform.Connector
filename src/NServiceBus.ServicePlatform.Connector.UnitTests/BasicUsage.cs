@@ -217,9 +217,9 @@
             var settings = endpointConfig.GetSettings();
 
             var property = typeof(SettingsHolder).GetField("Overrides", BindingFlags.NonPublic | BindingFlags.Instance);
-            Assert.IsNotNull(property, "Overrides property cannot be found");
+            Assert.That(property, Is.Not.Null, "Overrides property cannot be found");
             var overrides = property.GetValue(settings) as ConcurrentDictionary<string, object>;
-            Assert.IsNotNull(overrides);
+            Assert.That(overrides, Is.Not.Null);
 
             return overrides.Keys.ToArray();
         }
