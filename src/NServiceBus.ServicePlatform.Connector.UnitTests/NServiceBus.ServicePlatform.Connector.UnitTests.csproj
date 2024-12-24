@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup Label="Transitive references">
-    <PackageReference Include="NServiceBus.Metrics" Version="5.0.0" />
     <PackageReference Include="NServiceBus.Metrics.ServiceControl" Version="5.0.0" />
   </ItemGroup>
 
