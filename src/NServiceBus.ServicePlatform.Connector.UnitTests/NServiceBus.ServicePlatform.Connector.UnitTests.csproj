@@ -22,4 +22,8 @@
     <PackageReference Include="PublicApiGenerator" Version="11.1.0" />
   </ItemGroup>
 
+  <ItemGroup Label="Direct references to transitive dependencies to avoid versions with CVE">
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+  </ItemGroup>
+
 </Project>
