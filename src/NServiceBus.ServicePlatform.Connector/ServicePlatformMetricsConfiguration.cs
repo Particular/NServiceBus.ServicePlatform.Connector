@@ -1,12 +1,11 @@
 ﻿namespace NServiceBus
 {
     using System;
-    using System.Text.Json.Serialization;
 
     /// <summary>
     /// Contains configuration options for the Metrics features of the Particular Service Platform.
     /// </summary>
-    public class ServicePlatformMetricsConfiguration
+    public partial class ServicePlatformMetricsConfiguration
     {
         /// <summary>
         /// If true, the endpoint will send metric data to the Particular Service Platform.
@@ -27,20 +26,6 @@
         /// Unique, human-readable, stable between restarts, identifier for running endpoint instance.
         /// </summary>
         public string InstanceId { get; set; }
-
-        /// <summary>
-        /// The maximum time to live for Metrics messages.
-        /// </summary>
-        [ObsoleteEx(
-            TreatAsErrorFromVersion = "4.0.0",
-            RemoveInVersion = "5.0.0",
-            ReplacementTypeOrMember = "TimeToLive")]
-        [JsonIgnore]
-        public TimeSpan? TimeToBeReceived
-        {
-            get => TimeToLive;
-            set => TimeToLive = value;
-        }
 
         /// <summary>
         /// The maximum time to live for Metrics messages.
