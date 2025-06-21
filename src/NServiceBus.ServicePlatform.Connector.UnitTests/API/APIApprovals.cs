@@ -1,4 +1,4 @@
-﻿namespace NServiceBus.PlatformConnection.UnitTests.API
+﻿namespace NServiceBus.ServicePlatform.Connector.UnitTests.API
 {
     using NUnit.Framework;
     using Particular.Approvals;
