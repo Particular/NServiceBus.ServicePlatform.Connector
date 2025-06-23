@@ -1,4 +1,4 @@
-﻿namespace NServiceBus.PlatformConnection.UnitTests
+﻿namespace NServiceBus.ServicePlatform.Connector.UnitTests
 {
     using System;
     using System.Collections.Concurrent;
