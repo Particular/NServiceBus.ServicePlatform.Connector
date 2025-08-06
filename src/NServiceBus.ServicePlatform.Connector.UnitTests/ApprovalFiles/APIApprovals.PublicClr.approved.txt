@@ -43,8 +43,7 @@ namespace NServiceBus
         public string InstanceId { get; set; }
         public System.TimeSpan Interval { get; set; }
         public string MetricsQueue { get; set; }
-        [System.Obsolete("Use `TimeToLive` instead. The member currently throws a NotImplementedException. " +
-            "Will be removed in version 5.0.0.", true)]
+        [System.Obsolete("Use \'TimeToLive\' instead. Will be removed in version 5.0.0.", true)]
         [System.Text.Json.Serialization.JsonIgnore]
         public System.TimeSpan? TimeToBeReceived { get; }
         public System.TimeSpan? TimeToLive { get; set; }
