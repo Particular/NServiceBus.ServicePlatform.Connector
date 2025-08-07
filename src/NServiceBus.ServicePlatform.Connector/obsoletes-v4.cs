@@ -4,15 +4,17 @@ namespace NServiceBus;
 
 using System;
 using System.Text.Json.Serialization;
+using Particular.Obsoletes;
 
 public partial class ServicePlatformMetricsConfiguration
 {
 
-    [ObsoleteEx(
+    [ObsoleteMetadata(
         TreatAsErrorFromVersion = "4.0.0",
         RemoveInVersion = "5.0.0",
         ReplacementTypeOrMember = "TimeToLive")]
     [JsonIgnore]
+    [Obsolete("Use 'TimeToLive' instead. Will be removed in version 5.0.0.", true)]
     public TimeSpan? TimeToBeReceived => throw new NotImplementedException();
 
 }
