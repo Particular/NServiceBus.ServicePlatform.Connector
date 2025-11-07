@@ -1,4 +1,3 @@
 [
-  "NServiceBus.Features.SagaAuditFeature",
   "NServiceBus.SagaAudit.Queue"
 ]

@@ -1,11 +1,9 @@
 [
   "errorQueue",
   "NServiceBus.AuditConfigReader+Result",
-  "NServiceBus.CustomChecks.CustomChecksFeature",
   "NServiceBus.CustomChecks.Queue",
-  "NServiceBus.Features.SagaAuditFeature",
-  "NServiceBus.Heartbeat.HeartbeatsFeature",
   "NServiceBus.Heartbeat.Queue",
+  "NServiceBus.Metrics.ServiceControl.ReportingOptions",
   "NServiceBus.MetricsOptions",
   "NServiceBus.SagaAudit.Queue"
 ]
