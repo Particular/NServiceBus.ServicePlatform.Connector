@@ -17,7 +17,7 @@
     <PackageReference Include="NServiceBus.Heartbeat" Version="6.0.0-alpha.3" />
     <PackageReference Include="NServiceBus.Metrics" Version="6.0.0-alpha.3" />
     <PackageReference Include="NServiceBus.Metrics.ServiceControl" Version="6.0.0-alpha.2" />
-    <PackageReference Include="NServiceBus.SagaAudit" Version="6.0.0-alpha.3" />
+    <PackageReference Include="NServiceBus.SagaAudit" Version="6.0.0-alpha.4" />
   </ItemGroup>
 
   <ItemGroup Label="Private dependencies">
